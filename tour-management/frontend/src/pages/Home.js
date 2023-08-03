@@ -6,6 +6,7 @@ import heroImg02 from '../assets/images/hero-img02.jpg';
 import heroVideo from '../assets/images/hero-video.mp4';
 import SubTitle from '../shared/SubTitle.js';
 import SearchBar from '../shared/SearchBar';
+import FeaturedTourList from '../Featured-tours/FeaturedTourList';
 import ServiceList from '../services/ServiceList';
 import worldImg from '../assets/images/world.png';
 
@@ -72,6 +73,7 @@ function Home(){
                         Our featured tours 
                       </h2>
                   </Col>
+                  <FeaturedTourList/>
                </Row>
             </Container>
           </section>
