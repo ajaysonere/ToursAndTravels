@@ -12,6 +12,7 @@ import FeaturedTourList from '../Featured-tours/FeaturedTourList';
 import ServiceList from '../services/ServiceList';
 import worldImg from '../assets/images/world.png';
 import MasonryImagesGallery from '../images-gallery/MasonryImagesGallery';
+import NewsLetter from '../shared/NewsLetter';
 
 function Home(){
     return (
@@ -157,6 +158,7 @@ function Home(){
             </Container>
           </section>
           {/* Testimonial section end */}
+          <NewsLetter/>
        </>
     );
 }
