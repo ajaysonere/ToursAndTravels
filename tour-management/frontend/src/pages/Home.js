@@ -4,6 +4,7 @@ import { Container ,Row , Col} from 'reactstrap';
 import heroImg from '../assets/images/hero-img01.jpg';
 import heroImg02 from '../assets/images/hero-img02.jpg';
 import heroVideo from '../assets/images/hero-video.mp4';
+import experienceImg from '../assets//images/experience.png';
 import SubTitle from '../shared/SubTitle.js';
 import SearchBar from '../shared/SearchBar';
 import FeaturedTourList from '../Featured-tours/FeaturedTourList';
@@ -78,7 +79,47 @@ function Home(){
             </Container>
           </section>
           {/* featured tour section end */}
+           
+          {/* Experience Section start */}
+         <section>
+            <Container>
+               <Row>
+                  <Col lg='6'>
+                     <div className='experience_content'>
+                        <SubTitle subtitle={'Experience'}/>
 
+                        <h2>With our all experience <br /> we will serve you </h2>
+                        <p>lorem ipsum dolor sit amet , consider adipiscing elit
+                           <br/>
+                           Quas alique , hic tempora inventore suscipt undeo.
+                        </p>
+                     </div>
+
+                     <div className='counter_wrapper d-flex align-items-center gap-5'>
+                       <div className='counter_box'>
+                          <span>12k+</span>
+                          <h6>successful trip </h6>
+                       </div>
+                       <div className='counter_box'>
+                          <span>2k+</span>
+                          <h6>Regular Clients </h6>
+                       </div>
+                       <div className='counter_box'>
+                          <span>15</span>
+                          <h6>Years experience</h6>
+                       </div>
+                     </div>
+
+                  </Col>
+                  <Col lg='6'>
+                     <div className='experience_img'>
+                        <img src={experienceImg} alt='experience image'></img>
+                     </div>
+                  </Col>
+               </Row>
+            </Container>
+         </section>
+          {/* Experience Section end */}
        </>
     );
 }
