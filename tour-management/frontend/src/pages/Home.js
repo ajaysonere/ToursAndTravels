@@ -7,6 +7,7 @@ import heroVideo from '../assets/images/hero-video.mp4';
 import experienceImg from '../assets//images/experience.png';
 import SubTitle from '../shared/SubTitle.js';
 import SearchBar from '../shared/SearchBar';
+import Testimonials from '../components/Testimonials/Testimonials';
 import FeaturedTourList from '../Featured-tours/FeaturedTourList';
 import ServiceList from '../services/ServiceList';
 import worldImg from '../assets/images/world.png';
@@ -149,7 +150,9 @@ function Home(){
                         What our fans say about us .
                      </h2>
                   </Col>
-
+                  <Col lg='12'>
+                     <Testimonials/>
+                  </Col>
                </Row>
             </Container>
           </section>
