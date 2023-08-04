@@ -10,6 +10,7 @@ import SearchBar from '../shared/SearchBar';
 import FeaturedTourList from '../Featured-tours/FeaturedTourList';
 import ServiceList from '../services/ServiceList';
 import worldImg from '../assets/images/world.png';
+import MasonryImagesGallery from '../images-gallery/MasonryImagesGallery';
 
 function Home(){
     return (
@@ -113,13 +114,46 @@ function Home(){
                   </Col>
                   <Col lg='6'>
                      <div className='experience_img'>
-                        <img src={experienceImg} alt='experience image'></img>
+                        <img src={experienceImg} alt='exp'></img>
                      </div>
                   </Col>
                </Row>
             </Container>
          </section>
           {/* Experience Section end */}
+
+          {/* Gallery Section Start */}
+          <section>
+            <Container>
+               <Row>
+                  <Col lg='12'>
+                     <SubTitle subtitle={'Gallery'}/>
+                     <h2 className='gallery_title'>
+                        Visit our customers tour gallery
+                     </h2>
+                  </Col>
+                  <Col lg='12'>
+                    <MasonryImagesGallery/>
+                  </Col>
+               </Row>
+            </Container>
+          </section>
+          {/* Gallery Section end */}
+          {/* Testimonial section start */}
+          <section>
+            <Container>
+               <Row>
+                  <Col lg="12">
+                     <SubTitle subtitle={'Fans Love'}/>
+                     <h2 className='testimonial_title'>
+                        What our fans say about us .
+                     </h2>
+                  </Col>
+
+               </Row>
+            </Container>
+          </section>
+          {/* Testimonial section end */}
        </>
     );
 }
