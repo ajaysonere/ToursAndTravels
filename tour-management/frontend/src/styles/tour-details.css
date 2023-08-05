@@ -4,7 +4,8 @@
     border-radius: 0.5rem;
     margin-bottom: 2.5rem;
 }
-.tour_info{
+.tour_info ,
+.tour_reviews{
     border-radius: 0.5rem;
     border: 1px solid rgb(299,231,235);
     padding: 2rem;
@@ -42,4 +43,70 @@
     line-height: 30px;
     font-size: 1rem;
     color: var(--text-color);
+}
+
+.rating_group span{
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.tour_reviews h4{
+    margin-bottom: 3rem;
+}
+.review_input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 2rem;
+    border: 1px solid var(--secondary-color);
+}
+.review_input input{
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+}
+.review_input input:focus{
+    outline: none;
+}
+.review_item{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 2rem;
+}
+.review_item img{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.user_review{
+    margin-top: 2.5rem;
+}
+.review_item h5{
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+.review_item p{
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+.review_item h6{
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+.review_item span{
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+}
+.review_item span i{
+    font-size: 1.2rem;
+    color: var(--secondary-color);
 }
