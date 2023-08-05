@@ -56,3 +56,26 @@
     padding: 1rem;
     border: 1px solid rgb(229, 231,235);
 }
+
+.booking_bottom li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.booking_bottom li h5 ,
+.booking_bottom li span{
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.booking_bottom {
+    margin-top: 1rem;
+}
+.total h5,
+.total span{
+    color: var(--heading-color);
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
