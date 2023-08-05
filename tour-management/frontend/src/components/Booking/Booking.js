@@ -42,16 +42,17 @@ function Booking({tour , avgRating}){
                 <h5>Information</h5>
                 <Form className='booking_info-form' onSubmit={handleClick}>
                     <FormGroup>
-                        <input type='text' placeholder='Full Name' id = "fullName" required onChange={handleChange}/>
+                        <input type='text' placeholder='Full Name' id="fullName" onChange={handleChange} required />
                     </FormGroup>
                     <FormGroup>
-                        <input type='number' placeholder='Phone Number' id = "phone" required onChange={handleChange}/>
+                        <input type='number' placeholder='Phone Number' id = "phone" onChange={handleChange}
+                        required />
                     </FormGroup>
                     <FormGroup className='d-flex align-items-center gap-3'>
-                        <input type='date' placeholder='Booking at' id = "bookAt" required onChange={handleChange}/>
+                        <input type='date' placeholder='Booking at' id="bookAt"  onChange={handleChange} required />
                     </FormGroup>
                     <FormGroup>
-                        <input type='number' placeholder='Guest size ' id = "guestSize" required onChange={handleChange}/>
+                        <input type='number' placeholder='Guest size ' id="guestSize" onChange={handleChange} required />
                     </FormGroup>
                 </Form>
             </div>

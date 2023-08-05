@@ -2,6 +2,7 @@ import React , {useRef , useState} from 'react';
 import {Container , Row , Col , Form , ListGroup} from 'reactstrap';
 import {useParams} from 'react-router-dom';
 import tourData from '../assets/data/tours';
+import NewsLetter from '../shared/NewsLetter';
 import calculateAvgRating from '../utils/avgRating';
 import '../styles/tour-details.css';
 import avatar from '../assets/images/avatar.jpg'
@@ -121,6 +122,7 @@ function TourDetails(){
               </Row>
             </Container>
           </section>
+          <NewsLetter/>
         </>
     );
 }
