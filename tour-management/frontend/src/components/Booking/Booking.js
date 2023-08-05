@@ -7,12 +7,12 @@ function Booking({tour , avgRating}){
     const {price , reviews} = tour;
     const navigate = useNavigate();
     const [credentials , setCredentials] = useState({
-        userId:'01',
-        userEmail:'example@gmail.com',
-        fullName:'',
-        phone:'',
-        guestSize:1,
-        bookAt:''
+        userId: '01',
+        userEmail: '', // Mark the field as an empty string initially
+        fullName: '',
+        phone: '',
+        guestSize: '',
+        bookAt: ''
     });
 
     const handleChange = e=>{
@@ -22,7 +22,11 @@ function Booking({tour , avgRating}){
     // send data to the server
     const handleClick = e=>{
         e.preventDefault();
-        navigate('/thank-you');
+        if (credentials.userEmail !== '') {
+            navigate('/thank-you');
+        } else {
+            alert('Please fill in all required fields.');
+        }
     }
 
     const serviceFee = 10;
@@ -42,17 +46,19 @@ function Booking({tour , avgRating}){
                 <h5>Information</h5>
                 <Form className='booking_info-form' onSubmit={handleClick}>
                     <FormGroup>
-                        <input type='text' placeholder='Full Name' id="fullName" onChange={handleChange} required />
+                        <input type='text' required placeholder='Full Name' id="fullName" onChange={handleChange} />
                     </FormGroup>
                     <FormGroup>
-                        <input type='number' placeholder='Phone Number' id = "phone" onChange={handleChange}
-                        required />
+                        <input type='email' required placeholder='Email' id="userEmail" onChange={handleChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <input type='number' required placeholder='Phone Number' id="phone" onChange={handleChange} />
                     </FormGroup>
                     <FormGroup className='d-flex align-items-center gap-3'>
-                        <input type='date' placeholder='Booking at' id="bookAt"  onChange={handleChange} required />
+                        <input type='date' required placeholder='Booking at' id="bookAt" onChange={handleChange} />
                     </FormGroup>
                     <FormGroup>
-                        <input type='number' placeholder='Guest size ' id="guestSize" onChange={handleChange} required />
+                        <input type='number' placeholder='Guest size' id="guestSize" onChange={handleChange} />
                     </FormGroup>
                 </Form>
             </div>

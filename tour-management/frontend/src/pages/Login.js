@@ -43,7 +43,7 @@ function Login(){
                        <Form onSubmit={handleClick}>
                          <FormGroup>
                           <input type='text' placeholder='Email' required id='email' onChange={handleChange}/>
-                         </FormGroup>
+                        </FormGroup>
                          <FormGroup>
                           <input type='password' placeholder='Password' required id='password' onChange={handleChange}/>
                          </FormGroup>
