@@ -54,6 +54,8 @@ function Tour(){
               </Row>
             </Container>
           </section>
+          
+          <NewsLetter/>
         </>
     );
 }
