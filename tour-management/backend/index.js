@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 
+import tourRoute from './routers/tour.js';
+import router from "./routers/tour.js";
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3500;
@@ -20,7 +23,7 @@ const connect = async()=>{
        console.log("Database is connected ");
 
     }catch(err){
-       console.log(`Mongodb connection failed ${err}`);
+       console.log(`Mongodb connection failed `);
     }
 }
 
@@ -30,13 +33,9 @@ const connect = async()=>{
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use('/tours' , tourRoute);
 
-
-// for testing
-app.get("/" , (req , res)=>{
-    res.send("API is Working ");
-})
-
+ 
 app.listen(port , ()=>{
     connect();
     console.log(`Server is running at http://localhost:${port}`);
