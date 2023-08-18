@@ -15,7 +15,15 @@ export const createTour = async (req, res) => {
 // update tour
 export const updateTour = async (req, res)=>{
     try {
-        
+        const id = req.params.id;
+        const updateTour = await Tour.findByIdAndUpdate(id,{
+            $set:req.body
+        } , {new:true});
+        res.status(200).json({
+            success:true, 
+            message:"Successfully updated", data:updateTour
+        });
+
     } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, message: 'Failed to updating tour' });
