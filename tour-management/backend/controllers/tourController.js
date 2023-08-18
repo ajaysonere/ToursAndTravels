@@ -48,7 +48,12 @@ export const deleteTour = async (req, res)=>{
 // get songle tour
 export const getSingleTour = async (req, res)=>{
     try {
-        
+        const id = req.params.id;
+        const getSingleTourData = await Tour.findById(id);
+        res.status(200).json({
+            success:true,
+            data:getSingleTourData
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, message: 'Failed to get single tour' });
@@ -58,7 +63,11 @@ export const getSingleTour = async (req, res)=>{
 // get all tours
 export const getAllTour = async (req, res)=>{
     try {
-        
+        const getAllTourData = await Tour.find({});
+        res.status(200).json({
+            success:true,
+            data:getAllTourData
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, message: 'Failed to get all tours' });
