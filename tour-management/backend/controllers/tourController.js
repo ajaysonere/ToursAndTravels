@@ -62,10 +62,18 @@ export const getSingleTour = async (req, res)=>{
 
 // get all tours
 export const getAllTour = async (req, res)=>{
+    // pagination
+    const page = parseInt(req.query.page);
+    console.log(page);
+
     try {
+
+        const tours = await Tour.find({}).skip(page*8).limit(8);
+
         const getAllTourData = await Tour.find({});
         res.status(200).json({
             success:true,
+            count:tours.length,
             data:getAllTourData
         });
     } catch (error) {
@@ -73,4 +81,7 @@ export const getAllTour = async (req, res)=>{
         res.status(500).json({ success: false, message: 'Failed to get all tours' });
     }
 }
+
+// get tours by search
+
 
