@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import cors from 'cors';
 import cookieParser from "cookie-parser";
-
+import authRoute from './routers/auth.js';
 import tourRoute from './routers/tour.js';
 import userRoute from "./models/User.js";
 
@@ -34,6 +34,7 @@ const connect = async()=>{
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use('/auth' , authRoute);
 app.use('/tours' , tourRoute);
 app.use('/users' , userRoute);
 
