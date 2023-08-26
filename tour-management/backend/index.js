@@ -13,6 +13,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3500;
 
+const corsOptions={
+    origin:true,
+    Credential:true
+}
+
 // database connection
 const connect = async()=>{
     try{
@@ -32,11 +37,11 @@ const connect = async()=>{
 
 // middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use('/tours' , tourRoute);
-app.use('/auth' , authRoute);
-app.use('/users' , userRoute);
+app.use('/api/v1/tours' , tourRoute);
+app.use('/api/v1/auth' , authRoute);
+app.use('/api/v1/users' , userRoute);
 
  
 app.listen(port , ()=>{
