@@ -8,7 +8,7 @@ import tourRoute from './routers/tour.js';
 import authRoute from './routers/auth.js';
 import userRoute from "./models/User.js";
 import reviewRoute from './routers/reviews.js';
-
+import bookingRoute from './routers/bookings.js';
 
 
 dotenv.config();
@@ -31,6 +31,7 @@ const connect = async()=>{
        console.log("Database is connected ");
 
     }catch(err){
+        console.log(err);
        console.log(`Mongodb connection failed `);
     }
 }
@@ -45,6 +46,7 @@ app.use('/api/v1/tours' , tourRoute);
 app.use('/api/v1/auth' , authRoute);
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/review', reviewRoute);
+app.use('/api/v1/booking', bookingRoute);
 
 
  
