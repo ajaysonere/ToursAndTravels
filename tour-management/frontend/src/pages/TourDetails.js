@@ -6,14 +6,18 @@ import NewsLetter from '../shared/NewsLetter';
 import calculateAvgRating from '../utils/avgRating';
 import '../styles/tour-details.css';
 import avatar from '../assets/images/avatar.jpg'
-import Booking from '../components/Booking/Booking';
+import Booking from '../components/Booking/Booking.js';
+import  useFetch  from './../hooks/useFetch.js';
+import {BASE_URL} from './../utils/config.js';
+
 function TourDetails(){
 
     const {id} = useParams();
     const reviewMsgRef = useRef('');
     const [tourRating , setTourRating] = useState(null);
-
-    const tour = tourData.find(tour => tour.id === id)
+    
+    // fetch data from database
+    const {data:tour} = useFetch(`${BASE_URL}/tours/${id}`)
 
     const {photo , title , desc ,address, price , reviews , city , distance , maxGroupSize} = tour;
 
@@ -27,7 +31,6 @@ function TourDetails(){
     const submitHandler = e=>{
         e.preventDefault();
         const reviewText = reviewMsgRef.current.value;
-       
     }
 
 
