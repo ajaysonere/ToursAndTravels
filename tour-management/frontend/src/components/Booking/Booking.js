@@ -1,36 +1,63 @@
 import { Form , FormGroup , ListGroup , ListGroupItem , Button} from 'reactstrap';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState , useContext} from 'react';
+import { json, useNavigate } from 'react-router-dom';
 import './../../styles/booking.css';
+import {AuthContext} from './../../context/AuthContext.js';
+import {BASE_URL} from './../../utils/config.js';
+
 function Booking({tour , avgRating}){
 
-    const {price , reviews} = tour;
+    const {price , reviews, title} = tour;
     const navigate = useNavigate();
-    const [credentials , setCredentials] = useState({
-        userId: '01',
-        userEmail: '', // Mark the field as an empty string initially
+
+    const {user} = useContext(AuthContext);
+
+    const [booking , setBooking] = useState({
+        userId: user && user._id,
+        userEmail: user && user.email, 
+        tourName: title,
         fullName: '',
         phone: '',
-        guestSize: '',
+        guestSize: 1,
         bookAt: ''
     });
 
     const handleChange = e=>{
-        setCredentials(prev=>({...prev , [e.target.id]:e.target.value}))
+        setBooking(prev=>({...prev , [e.target.id]:e.target.value}))
     }
 
     // send data to the server
-    const handleClick = e=>{
+    const handleClick = async e=>{
         e.preventDefault();
-        if (credentials.userEmail !== '') {
+
+        console.log(booking);
+
+         try {
+            if(!user || user === undefined || user===null){
+                return alert('please sign in');
+            }
+
+            const res = await fetch(`${BASE_URL}/booking` , {
+                method:'post',
+                headers:{
+                    'content-type':'application/json'
+                },
+                credentials:'include',
+                body:JSON.stringify(booking)
+            })
+            const result = await res.json();
+
+            if(!res.ok){
+                return alert(result.message);
+            }
             navigate('/thank-you');
-        } else {
-            alert('Please fill in all required fields.');
-        }
+         } catch (err){
+            alert(err.message);
+         }
     }
 
     const serviceFee = 10;
-    const totalAmount = Number(price)*Number(credentials.guestSize)+Number(serviceFee);
+    const totalAmount = Number(price)*Number(booking.guestSize)+Number(serviceFee);
 
     return (
         <div className='booking'>

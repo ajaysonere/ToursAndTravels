@@ -23,6 +23,7 @@ const nav_links=[
 function Header(){
 
     const headerRef = useRef(null);
+    const menuRef = useRef(null);
     const navigate = useNavigate();
     const {user , dispatch}= useContext(AuthContext);
     const logout = ()=>{
@@ -45,6 +46,8 @@ function Header(){
       return window.removeEventListener('scroll' , stickyHeaderFunc);
     })
 
+    const toggleMenu = ()=> menuRef.current.classList.toggle('show_menu');
+
     return(
            <>
               <header className='header' ref={headerRef}>
@@ -57,7 +60,7 @@ function Header(){
                       </div>
                       {/* logo end */}
                       {/* Menu start  */}
-                      <div className='navigation'>
+                      <div className='navigation' ref={menuRef} onClick={toggleMenu}>
                          <ul className='menu d-flex align-items-center gap-5'>
                            {
                             nav_links.map((item , index)=>(
@@ -94,7 +97,7 @@ function Header(){
 
                          </div>
 
-                         <span className='mobile_menu'>
+                         <span className='mobile_menu' onClick={toggleMenu}>
                            <i class="ri-menu-line"></i>
                          </span>
                       </div>
