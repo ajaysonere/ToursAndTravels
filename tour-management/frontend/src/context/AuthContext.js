@@ -3,7 +3,7 @@ import {createContext , useEffect,useReducer} from 'react';
 const storedUser = localStorage.getItem('user');
 
 const initial_state = {
-    user: storedUser ? JSON.parse(storedUser) : null,
+    user: storedUser ?JSON.stringify(storedUser) : null,
     loading: false,
     error: null
 }

@@ -19,7 +19,7 @@ function TourDetails(){
     // fetch data from database
     const {data:tour , loading,error} = useFetch(`${BASE_URL}/tours/${id}`)
 
-    const {photo , title , desc ,address, price , reviews , city , distance , maxGroupSize} = tour;
+    const {photo , title , desc ,address, price , reviews=[], city , distance , maxGroupSize} = tour;
 
 
     const {totalRating , avgRating} = calculateAvgRating(reviews)
@@ -88,7 +88,7 @@ function TourDetails(){
                       <div className='d-flex align-items-center gap-5'>
                         <span className="tour_rating d-flex align-items-center gap-1">
                           <i class="ri-star-fill" style={{ 'color': 'var(--secondary-color)' }}></i>{avgRating === 0 ? null : avgRating}
-                          {totalRating === 0 ? ('Not rated ') : (<span>({reviews.length})</span>)}
+                          {totalRating === 0 ? ('Not rated ') : (<span>({reviews?.length})</span>)}
                         </span>
 
                         <span>
@@ -106,7 +106,7 @@ function TourDetails(){
                     </div>
                     {/* tour reviews section start*/}
                     <div className='tour_reviews mt-4'>
-                      <h4>Reviews ({reviews?.length} reviews)</h4>
+                      {/* <h4>Reviews ({reviews.length} reviews)</h4> */}
                       <Form onSubmit={submitHandler}>
                         <div className='d-flex align-items-center gap-3 mb-4 rating_group'>
                           <span onClick={() => setTourRating(1)}>
@@ -135,8 +135,8 @@ function TourDetails(){
 
                       <ListGroup className='user_reviews'>
                         {
-                          reviews.map(reviews => (
-                            <div className='review_item'>
+                          reviews.map((reviews,index) => (
+                            <div key={index} className='review_item'>
                               <img src={avatar} alt='ava' />
                               <div className='w-100'>
                                 <div className='w-100 d-flex align-items-center justify-centent-between '>

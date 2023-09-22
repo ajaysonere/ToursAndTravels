@@ -1,13 +1,13 @@
 import { Form , FormGroup , ListGroup , ListGroupItem , Button} from 'reactstrap';
 import { useState , useContext} from 'react';
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './../../styles/booking.css';
 import {AuthContext} from './../../context/AuthContext.js';
 import {BASE_URL} from './../../utils/config.js';
 
 function Booking({tour , avgRating}){
 
-    const {price , reviews, title} = tour;
+    const {price , reviews , title} = tour;
     const navigate = useNavigate();
 
     const {user} = useContext(AuthContext);
@@ -30,7 +30,7 @@ function Booking({tour , avgRating}){
     const handleClick = async e=>{
         e.preventDefault();
 
-        console.log(booking);
+        console.log( `${booking}is`);
 
          try {
             if(!user || user === undefined || user===null){
@@ -64,7 +64,7 @@ function Booking({tour , avgRating}){
             <div className='booking_top d-flex align-items-center justify-content-between'>
                 <h3>${price}<span>/per person</span></h3>
                 <span className="tour_rating d-flex align-items-center">
-                                <i class="ri-star-fill"></i>{avgRating === 0 ? null : avgRating}({reviews.length})
+                                <i class="ri-star-fill"></i>{avgRating === 0 ? null : avgRating}({1})
                             </span>
             </div>
 

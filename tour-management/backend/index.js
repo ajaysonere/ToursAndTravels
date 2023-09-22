@@ -6,7 +6,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import tourRoute from './routers/tour.js';
 import authRoute from './routers/auth.js';
-import userRoute from "./models/User.js";
+import userRoute from "./models/Users.js";
 import reviewRoute from './routers/reviews.js';
 import bookingRoute from './routers/bookings.js';
 

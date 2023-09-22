@@ -29,16 +29,13 @@ function Login(){
          const res = await fetch(`${BASE_URL}/auth/login` , {
             method: 'post',
             headers: {
-               'Context-type':'application/json',
+               'content-type':'application/json',
             },
             credentials:'include',
             body:JSON.stringify(credentials)
          })
         const result = await res.json();
         if(!res.ok) alert(result.message);
-
-
-        console.log(`this is console check`+result.data);
 
         dispatch({type:'LOGIN_SUCCESS' , payload:result.data})
         navigate('/');

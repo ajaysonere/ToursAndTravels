@@ -64,7 +64,7 @@ export const getSingleTour = async (req, res)=>{
 export const getAllTour = async (req, res)=>{
     // pagination
     const page = parseInt(req.query.page);
-    console.log(page);
+    // console.log(page);
 
     try {
 
