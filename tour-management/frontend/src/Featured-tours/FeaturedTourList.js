@@ -7,7 +7,6 @@ import { BASE_URL } from '../utils/config';
 
 function FeaturedTourList(){
     const {data : FeaturedTours,loading , error} = useFetch(`${BASE_URL}/tours/search/getFeaturedTours`);
-    console.log(FeaturedTours);
 
     return(
        

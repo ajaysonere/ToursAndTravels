@@ -15,11 +15,12 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3500;
 
-const corsOptions={
-    origin:true,
-    Credential:true
-}
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with the actual origin of your frontend
+    credentials: true, // Allow credentials (cookies, HTTP authentication)
+};
 
+app.use(cors(corsOptions));
 // database connection
 const connect = async()=>{
     try{

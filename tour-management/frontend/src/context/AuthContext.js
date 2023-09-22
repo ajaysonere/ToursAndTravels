@@ -1,10 +1,10 @@
 import {createContext , useEffect,useReducer} from 'react';
 
+const storedUser = localStorage.getItem('user');
 const initial_state = {
-    user:localStorage.getItem('user') !== undefined
-    ? JSON.parse(localStorage.getItem('user')):null,
-    loading:false,
-    error:null
+    user: storedUser ? JSON.parse(storedUser) : null,
+    loading: false,
+    error: null
 }
 
 export const AuthContext = createContext(initial_state);

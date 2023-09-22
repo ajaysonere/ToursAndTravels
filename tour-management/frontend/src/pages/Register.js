@@ -19,12 +19,13 @@ function Register() {
   const {dispatch} = useContext(AuthContext);
   const navigate = useNavigate()
 
-  const handleChange = e => {
-    setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }))
+  const handleChange =  e => {
+     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }))
   }
 
   const handleClick = async e => {
      e.preventDefault();
+
      try{
         const res = await fetch(`${BASE_URL}/auth/register` , {
             method:'post',
@@ -35,7 +36,7 @@ function Register() {
         });
         const result = await res.json();
         if(!res.ok) alert(result.message);
-
+         
         dispatch({type:'REGISTER_SUCCESS'})
         navigate('/login');
      }catch(err){
