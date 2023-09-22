@@ -1,6 +1,7 @@
 import {createContext , useEffect,useReducer} from 'react';
 
 const storedUser = localStorage.getItem('user');
+
 const initial_state = {
     user: storedUser ? JSON.parse(storedUser) : null,
     loading: false,

@@ -1,4 +1,4 @@
-import React , {useEffect, useRef , useState} from 'react';
+import React , {useEffect, useRef , useState,useContext} from 'react';
 import {Container , Row , Col , Form , ListGroup} from 'reactstrap';
 import {useParams} from 'react-router-dom';
 import NewsLetter from '../shared/NewsLetter';
@@ -8,13 +8,14 @@ import avatar from '../assets/images/avatar.jpg'
 import Booking from '../components/Booking/Booking.js';
 import  useFetch  from './../hooks/useFetch.js';
 import {BASE_URL} from './../utils/config.js';
+import {AuthContext} from '../context/AuthContext.js';
 
 function TourDetails(){
 
     const {id} = useParams();
     const reviewMsgRef = useRef('');
     const [tourRating , setTourRating] = useState(null);
-    
+    const {user} = useContext(AuthContext)
     // fetch data from database
     const {data:tour , loading,error} = useFetch(`${BASE_URL}/tours/${id}`)
 
@@ -27,9 +28,39 @@ function TourDetails(){
     const options = {day: "numeric" , month: "long",year:"numeric"};
 
     // submit request to the server
-    const submitHandler = e=>{
+    const submitHandler = async e=>{
         e.preventDefault();
         const reviewText = reviewMsgRef.current.value;
+
+        try{
+           if(!user || user===undefined || user===null){
+             alert(`Please sign in`);
+           }
+           
+           const reviewObj = {
+            username:user?.username,
+            reviewText,
+            rating:tourRating,
+           }
+
+           const res = await fetch(`${BASE_URL}/review/${id}` , {
+              method:'post',
+              headers:{
+                'content-type':'application/json'
+              },
+              credentials:'include',
+              body:JSON.stringify(reviewObj)
+           })
+            
+           const result = await res.json();
+           if(!res.ok) {
+             return alert(result.message);
+           }
+          alert(result.message);
+
+        }catch(err){
+           alert(err.message);
+        }
     }
 
     useEffect(()=>{
@@ -110,15 +141,15 @@ function TourDetails(){
                               <div className='w-100'>
                                 <div className='w-100 d-flex align-items-center justify-centent-between '>
                                   <div className='w-100'>
-                                    <h5>muhib</h5>
-                                    <p>{new Date('05-08-2023').toLocaleDateString('en-US', options)}
+                                    <h5>{reviews.username}</h5>
+                                    <p>{new Date(reviews.createdAt).toLocaleDateString('en-US', options)}
                                     </p>
                                   </div>
                                   <span className=''>
-                                    5<i class="ri-star-s-fill"></i>
+                                    {reviews.rating}<i class="ri-star-s-fill"></i>
                                   </span>
                                 </div>
-                                <h6>Amazing tour</h6>
+                                <h6>{reviews.reviewText}</h6>
                               </div>
                             </div>
                           ))
