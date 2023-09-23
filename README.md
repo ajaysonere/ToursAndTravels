@@ -11,5 +11,6 @@ npm install
 
 
 # Run frontEnd and backend
-frontend/src - npm start
+frontend/src - npm start  ,
+
 backend - node index.js
