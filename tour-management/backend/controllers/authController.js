@@ -1,6 +1,7 @@
 import Users from '../models/Users.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import sendEmail from './../utils/mailer.js';
 
 
 export const register = async (req , res)=>{
@@ -18,7 +19,7 @@ export const register = async (req , res)=>{
         })
 
         await newUser.save();
-
+        sendEmail(req.body.email);
         res.status(200).json({
             success:true,
             message:'successfully created'
