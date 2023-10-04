@@ -43,38 +43,41 @@ To run the ToursAndTravels web app on your local machine, follow these steps:
    git clone https://github.com/ajaysonere/ToursAndTravels.git
    cd ToursAndTravels
 2. Install Frontend Dependencies:
-   `  cd frontend
-      npm install  `
+   ```bash
+      cd frontend
+      npm install  
 3. Install backend dependencies:
-   `   cd ../backend
-       npm install  `
+   ```bash
+       cd ../backend
+       npm install  
 
 ## Configuration
 
 Before running the application, you need to set up some configuration settings in the backend:
 
 1. Create a .env file in the backend directory and configure the following environment variables:
-   `
+   ```bash
+   
         PORT=3800
         MONGODB_URL='YOUR_MONGODB_CONNECTION_STRING'
         JWT_SECRET_KEY='YOUR_SECRET_KEY'(It can whatever you want)
-   `
-   Replace 'YOUR_MONGODB_CONNECTION_STRING' and 'YOUR_SECRET_KEY' with your MongoDB database connection string and a secret key for JWT.
+   
+2. Replace 'YOUR_MONGODB_CONNECTION_STRING' and 'YOUR_SECRET_KEY' with your MongoDB database connection string and a secret key for JWT.
 
 ## Usage
 
 To start the application, follow these steps:
 
 1. Start the backend server:
-   `
+   ```bash
      cd backend
      node index.js
-   `
+   
 2. Start the Frontend development server:
-   `
+   ```bash
     cd frontend
     npm start
-  `
+   
 3. Access the application in your web browser at http://localhost:3000.
 
 4. Explore the web app's features and functionalities to browse travel destinations, book tours, and manage your travel activities.
