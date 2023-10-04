@@ -56,8 +56,8 @@ To run the ToursAndTravels web app on your local machine, follow these steps:
 Before running the application, you need to set up some configuration settings in the backend:
 
 1. Create a .env file in the backend directory and configure the following environment variables:
-   ```bash
    
+   ```bash
         PORT=3800
         MONGODB_URL='YOUR_MONGODB_CONNECTION_STRING'
         JWT_SECRET_KEY='YOUR_SECRET_KEY'(It can whatever you want)
